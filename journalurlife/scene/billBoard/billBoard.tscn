@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dveaxhtqsjai6"]
+
+[ext_resource type="Texture2D" uid="uid://dihqpahpruaah" path="res://asset/texture/bg.png" id="1_1sybc"]
+[ext_resource type="Texture2D" uid="uid://0gelp4lss8yo" path="res://asset/texture/billboard.png" id="2_y2w33"]
+[ext_resource type="FontFile" uid="uid://bltfg6i06jtk7" path="res://asset/font/LifeSavers-Regular.ttf" id="3_8gnex"]
+
+[node name="BillBoard" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1918.0
+offset_bottom = 1079.0
+texture = ExtResource("1_1sybc")
+
+[node name="BillBoard" type="TextureRect" parent="CanvasLayer"]
+offset_left = 141.0
+offset_top = 1.0
+offset_right = 1777.0
+offset_bottom = 1081.0
+texture = ExtResource("2_y2w33")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -269.0
+offset_top = 80.0
+offset_right = 269.0
+offset_bottom = 168.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8gnex")
+theme_override_font_sizes/font_size = 72
+text = "How is your day?"
