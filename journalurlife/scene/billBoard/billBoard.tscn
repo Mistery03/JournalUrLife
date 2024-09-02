@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dveaxhtqsjai6"]
+[gd_scene load_steps=9 format=3 uid="uid://dveaxhtqsjai6"]
 
 [ext_resource type="Texture2D" uid="uid://dihqpahpruaah" path="res://asset/texture/bg.png" id="1_1sybc"]
 [ext_resource type="Texture2D" uid="uid://0gelp4lss8yo" path="res://asset/texture/billboard.png" id="2_y2w33"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://elements/billBoard/bill_board.gd" id="3_wk68l"]
 [ext_resource type="Texture2D" uid="uid://cg6glkq5tk75d" path="res://asset/texture/bookmark.png" id="4_sa4oa"]
 [ext_resource type="FontFile" uid="uid://d1ooopklpa7mb" path="res://asset/font/LifeSavers-Bold.ttf" id="5_by0vx"]
+[ext_resource type="Texture2D" uid="uid://comxvitipdj44" path="res://asset/texture/selection.png" id="7_tqs6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yybw"]
+size = Vector2(195, 48.5714)
 
 [node name="BillBoard" type="Node2D"]
 
@@ -42,16 +46,19 @@ theme_override_fonts/font = ExtResource("3_8gnex")
 theme_override_font_sizes/font_size = 72
 text = "How is your day?"
 
-[node name="Bookmarks" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Bookmarks" type="Control" parent="CanvasLayer"]
 custom_minimum_size = Vector2(200, 100)
-offset_top = 200.0
+layout_mode = 3
+anchors_preset = 0
+offset_top = 58.0
 offset_right = 200.0
-offset_bottom = 312.0
+offset_bottom = 170.0
 scale = Vector2(1.4, 1.4)
-theme_override_constants/separation = 14
 
 [node name="StickyNote" type="TextureRect" parent="CanvasLayer/Bookmarks"]
 layout_mode = 2
+offset_right = 200.0
+offset_bottom = 49.0
 texture = ExtResource("4_sa4oa")
 
 [node name="Label" type="Label" parent="CanvasLayer/Bookmarks/StickyNote"]
@@ -71,9 +78,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Interact" type="Area2D" parent="CanvasLayer/Bookmarks/StickyNote"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Bookmarks/StickyNote/Interact"]
+position = Vector2(97.5, 24.2857)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6yybw")
+
 [node name="Emotion" type="TextureRect" parent="CanvasLayer/Bookmarks"]
 self_modulate = Color(0.156863, 0.290196, 1, 1)
 layout_mode = 2
+offset_top = 63.0
+offset_right = 200.0
+offset_bottom = 112.0
 texture = ExtResource("4_sa4oa")
 
 [node name="Label" type="Label" parent="CanvasLayer/Bookmarks/Emotion"]
@@ -91,3 +108,16 @@ text = "Emotions"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="SelectionMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectionBG" type="TextureRect" parent="CanvasLayer/SelectionMenu"]
+offset_left = -638.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1081.0
+texture = ExtResource("7_tqs6x")
