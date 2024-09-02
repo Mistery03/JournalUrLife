@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dveaxhtqsjai6"]
+[gd_scene load_steps=7 format=3 uid="uid://dveaxhtqsjai6"]
 
 [ext_resource type="Texture2D" uid="uid://dihqpahpruaah" path="res://asset/texture/bg.png" id="1_1sybc"]
 [ext_resource type="Texture2D" uid="uid://0gelp4lss8yo" path="res://asset/texture/billboard.png" id="2_y2w33"]
 [ext_resource type="FontFile" uid="uid://bltfg6i06jtk7" path="res://asset/font/LifeSavers-Regular.ttf" id="3_8gnex"]
+[ext_resource type="Script" path="res://elements/billBoard/bill_board.gd" id="3_wk68l"]
+[ext_resource type="Texture2D" uid="uid://cg6glkq5tk75d" path="res://asset/texture/bookmark.png" id="4_sa4oa"]
+[ext_resource type="FontFile" uid="uid://d1ooopklpa7mb" path="res://asset/font/LifeSavers-Bold.ttf" id="5_by0vx"]
 
 [node name="BillBoard" type="Node2D"]
 
@@ -17,22 +20,74 @@ offset_bottom = 1079.0
 texture = ExtResource("1_1sybc")
 
 [node name="BillBoard" type="TextureRect" parent="CanvasLayer"]
-offset_left = 141.0
+offset_left = 220.0
 offset_top = 1.0
-offset_right = 1777.0
+offset_right = 1856.0
 offset_bottom = 1081.0
 texture = ExtResource("2_y2w33")
+script = ExtResource("3_wk68l")
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Title" type="Label" parent="CanvasLayer/BillBoard"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -269.0
-offset_top = 80.0
-offset_right = 269.0
-offset_bottom = 168.0
+offset_left = -268.0
+offset_top = 79.0
+offset_right = 270.0
+offset_bottom = 167.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8gnex")
 theme_override_font_sizes/font_size = 72
 text = "How is your day?"
+
+[node name="Bookmarks" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 100)
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 312.0
+scale = Vector2(1.4, 1.4)
+theme_override_constants/separation = 14
+
+[node name="StickyNote" type="TextureRect" parent="CanvasLayer/Bookmarks"]
+layout_mode = 2
+texture = ExtResource("4_sa4oa")
+
+[node name="Label" type="Label" parent="CanvasLayer/Bookmarks/StickyNote"]
+layout_mode = 0
+offset_left = 6.66667
+offset_top = 12.5
+offset_right = 140.667
+offset_bottom = 37.5
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.695503, 0.695503, 0.695503, 1)
+theme_override_constants/shadow_offset_y = 100
+theme_override_fonts/font = ExtResource("5_by0vx")
+theme_override_font_sizes/font_size = 2000
+text = "Sticky Note"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Emotion" type="TextureRect" parent="CanvasLayer/Bookmarks"]
+self_modulate = Color(0.156863, 0.290196, 1, 1)
+layout_mode = 2
+texture = ExtResource("4_sa4oa")
+
+[node name="Label" type="Label" parent="CanvasLayer/Bookmarks/Emotion"]
+offset_left = 6.66667
+offset_top = 12.5
+offset_right = 140.667
+offset_bottom = 37.5
+scale = Vector2(0.01, 0.01)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.695503, 0.695503, 0.695503, 1)
+theme_override_constants/shadow_offset_y = 100
+theme_override_fonts/font = ExtResource("5_by0vx")
+theme_override_font_sizes/font_size = 2000
+text = "Emotions"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
